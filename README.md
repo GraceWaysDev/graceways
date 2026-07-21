@@ -11,10 +11,10 @@ This repository contains the browser-based prototype submitted to OpenAI Build W
 ## Try it in 60 seconds
 
 1. Open the [live GraceWays prototype](https://graceways.dev).
-2. Select **“Beispielakte Sissi ansehen”** to load the complete example record.
-3. Optionally add an image, video, or audio file in the **Medien** section.
+2. Select **“Explore Sissi's example record”** to load the complete example record.
+3. Optionally add an image, video, or audio file in the **Media** section.
 4. Review the live Markdown preview on the right.
-5. Select **“Komplette Tierakte herunterladen”**.
+5. Select **“Download complete animal record”**.
 6. Extract the downloaded ZIP file. It contains the Markdown animal record and all added media in organized folders.
 
 No account or test credentials are required. The demo is free to use in a current desktop or mobile browser.
@@ -113,7 +113,7 @@ All record generation and export processing takes place in the user's browser. T
 ## Prototype boundaries and privacy
 
 - Sequential IDs are unique only within the same browser and device in this prototype. A production team version needs a shared organization-level ID service.
-- Text drafts, including fields marked internal, remain in that browser's local storage until **“Neue Tierakte beginnen”** is selected or site data is cleared. Do not leave a draft on a shared computer.
+- Text drafts, including fields marked internal, remain in that browser's local storage until **“Start a new animal record”** is selected or site data is cleared. Do not leave a draft on a shared computer.
 - Uploaded media is not restored after reloading the page and becomes durable only after downloading the complete ZIP package.
 - ZIP generation happens in browser memory. Large video files may exceed the memory available on a phone or older computer, so compressed media is recommended for prototype testing.
 - GraceWays is a documentation tool and does not replace veterinary systems, professional privacy review, or a backup strategy.

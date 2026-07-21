@@ -1,108 +1,108 @@
 const languages = [
-  ["DE", "Deutsch"], ["EN", "English"], ["EL", "Ελληνικά"],
-  ["RO", "Română"], ["RU", "Русский"], ["ES", "Español"], ["FR", "Français"]
+  ["DE", "German"], ["EN", "English"], ["EL", "Greek"],
+  ["RO", "Romanian"], ["RU", "Russian"], ["ES", "Spanish"], ["FR", "French"]
 ];
 
 const field = (id, label, type = "text", options = {}) => ({ id, label, type, ...options });
 
 const sections = [
-  { id: "organization", icon: "🏠", title: "Organisation & Aktenidentität", open: true, fields: [
-    field("organization_id", "Organisations-ID", "text", {required:true, hint:"Zum Beispiel SC für SunCats."}),
-    field("organization_name", "Name der Organisation", "text", {required:true}),
-    field("country_code", "Ländercode", "text", {required:true, hint:"ISO-Code, zum Beispiel EL, DE oder RO."}),
-    field("country_name", "Land"),
-    field("profile_number", "Laufende Aktennummer", "number", {required:true, readonly:true, hint:"Wird auf diesem Gerät automatisch fortlaufend vergeben und dreistellig formatiert."}),
-    field("id", "Automatisch erzeugte Tierakten-ID", "text", {required:true, readonly:true, hint:"Entsteht automatisch aus Land, Verein, Kollektion und laufender Nummer."}),
-    field("interface_language", "Sprache der Eingabemaske", "select", {options: languages}),
-    field("content_language", "Sprache der Originalangaben", "select", {options: languages, hint:"Die Sprache, in der Geschichte, Beobachtungen und weitere Originaltexte eingetragen werden. Der ursprüngliche Wortlaut bleibt erhalten."}),
-    field("output_languages", "Gewünschte Ausgabesprachen", "checks", {options: languages, wide:true, hint:"Wähle alle Sprachen, in denen später Vermittlungs-, Website- oder Social-Media-Texte ausgegeben werden sollen. Mehrere Sprachen sind möglich."})
+  { id: "organization", icon: "🏠", title: "Organization & record identity", open: true, fields: [
+    field("organization_id", "Organization ID", "text", {required:true, hint:"For example, SC for SunCats."}),
+    field("organization_name", "Organization name", "text", {required:true}),
+    field("country_code", "Country code", "text", {required:true, hint:"ISO code, for example EL, DE or RO."}),
+    field("country_name", "Country"),
+    field("profile_number", "Sequential record number", "number", {required:true, readonly:true, hint:"Assigned sequentially on this device and formatted with three digits."}),
+    field("id", "Automatically generated animal ID", "text", {required:true, readonly:true, hint:"Built from country, organization, collection and sequence number."}),
+    field("interface_language", "Interface language", "select", {options: languages}),
+    field("content_language", "Original content language", "select", {options: languages, hint:"The language used for the original story, observations and other source text. The original wording is preserved."}),
+    field("output_languages", "Requested output languages", "checks", {options: languages, wide:true, hint:"Select every language needed later for adoption profiles, website content or social media. Multiple languages are possible."})
   ]},
-  { id: "basic", icon: "🐾", title: "Grundinformationen", open: true, fields: [
-    field("name", "Name des Tieres", "text", {required:true, hint:"Der Rufname des Tieres. Ist noch kein Name bekannt, kann vorläufig „Unbekannt“ eingetragen werden."}),
-    field("species", "Tierart", "select", {required:true, options:[["cat","Katze"],["dog","Hund"],["horse","Pferd"],["bird","Vogel"],["wildlife","Wildtier"],["other","Andere"]]}),
-    field("slug", "Automatischer Dateiname / Slug", "text", {readonly:true, hint:"Wird automatisch aus dem Namen erzeugt, zum Beispiel „Mia Sophie“ → „mia-sophie“. Er dient als eindeutiger, webfreundlicher Datei- und Ordnername."}),
-    field("status", "Aktueller Status", "select", {required:true, options:[["aufgenommen","Aufgenommen"],["in_behandlung","In Behandlung"],["pflegestelle","Auf Pflegestelle"],["sucht_zuhause","Sucht ein Zuhause"],["reserviert","Reserviert"],["vermittelt","Vermittelt"],["verstorben","Verstorben"]]}),
-    field("gender", "Geschlecht", "select", {options:[["female","Weiblich"],["male","Männlich"],["unknown","Unbekannt"]]}),
-    field("age", "Alter / Geburtsdatum", "text", {hint:"So genau wie bekannt, zum Beispiel „3 Jahre“, „ca. 10–12 Jahre“ oder „geboren am 14.05.2022“."}),
-    field("breed", "Rasse / Mischung", "text", {hint:"Zum Beispiel „Europäisch Kurzhaar“, „Labrador-Mix“, „Mischling“ oder „unbekannt“."}),
-    field("color_marks", "Farbe / besondere Kennzeichen", "text", {hint:"Fellfarbe und unverwechselbare Merkmale, zum Beispiel „schwarz-weiß, weiße Vorderpfote, Kerbe im rechten Ohr“ oder „Narbe auf der Nase“."}),
-    field("location", "Aktueller Aufenthaltsort", "text", {required:true}),
-    field("special_features", "Besondere Merkmale", "textarea", {wide:true, hint:"Ein Merkmal pro Zeile."})
+  { id: "basic", icon: "🐾", title: "Basic information", open: true, fields: [
+    field("name", "Animal name", "text", {required:true, hint:"The animal's call name. If no name is known yet, enter “Unknown” temporarily."}),
+    field("species", "Species", "select", {required:true, options:[["cat","Cat"],["dog","Dog"],["horse","Horse"],["bird","Bird"],["wildlife","Wildlife"],["other","Other"]]}),
+    field("slug", "Automatic filename / slug", "text", {readonly:true, hint:"Generated automatically from the name, for example “Mia Sophie” → “mia-sophie”. It provides a web-friendly filename and folder name."}),
+    field("status", "Current status", "select", {required:true, options:[["intake","Intake"],["in_treatment","In treatment"],["in_foster_care","In foster care"],["seeking_a_home","Seeking a home"],["reserved","Reserved"],["adopted","Adopted"],["deceased","Deceased"]]}),
+    field("gender", "Gender", "select", {options:[["female","Female"],["male","Male"],["unknown","Unknown"]]}),
+    field("age", "Age / date of birth", "text", {hint:"As accurately as known, for example “3 years”, “about 10–12 years” or “born May 14, 2022”."}),
+    field("breed", "Breed / mix", "text", {hint:"For example “European Shorthair”, “Labrador mix”, “mixed breed” or “unknown”."}),
+    field("color_marks", "Color / distinctive marks", "text", {hint:"Coat color and identifying features, for example “black and white, white front paw, notch in right ear” or “scar on nose”."}),
+    field("location", "Current location", "text", {required:true}),
+    field("special_features", "Special features", "textarea", {wide:true, hint:"One feature per line."})
   ]},
-  { id: "story", icon: "❤️", title: "Geschichte & Heart Note", fields: [
-    field("original_story", "Original Story", "textarea", {required:true, wide:true, hint:"Der ursprüngliche Text der rettenden Person oder Organisation bleibt unverändert."}),
-    field("heart_note", "Heart Note", "textarea", {wide:true, hint:"3–5 einfühlsame Sätze. Kann später mit KI vorgeschlagen und vom Verein bestätigt werden."}),
-    field("slogans", "Slogans", "textarea", {wide:true, hint:"Ein Slogan pro Zeile."})
+  { id: "story", icon: "❤️", title: "Story & Heart Note", fields: [
+    field("original_story", "Original story", "textarea", {required:true, wide:true, hint:"The source text from the rescuer or organization remains unchanged."}),
+    field("heart_note", "Heart Note", "textarea", {wide:true, hint:"Three to five empathetic sentences. AI may suggest this later, with the organization approving the final text."}),
+    field("slogans", "Slogans", "textarea", {wide:true, hint:"One slogan per line."})
   ]},
-  { id: "timeline", icon: "🗓️", title: "Zeitverlauf", fields: [
-    field("first_sighting", "Erste Sichtung"), field("first_contact", "Erster Kontakt"),
-    field("rescue_intake", "Rettung / Aufnahme"), field("veterinary_visit", "Tierarztbesuch"),
-    field("current_situation", "Aktuelle Situation", "textarea", {wide:true}),
-    field("timeline_more", "Weitere Ereignisse", "textarea", {wide:true, hint:"Je Zeile: Datum | Ereignis | Notiz"})
+  { id: "timeline", icon: "🗓️", title: "Timeline", fields: [
+    field("first_sighting", "First sighting"), field("first_contact", "First contact"),
+    field("rescue_intake", "Rescue / intake"), field("veterinary_visit", "Veterinary visit"),
+    field("current_situation", "Current situation", "textarea", {wide:true}),
+    field("timeline_more", "Further events", "textarea", {wide:true, hint:"One per line: date | event | note"})
   ]},
-  { id: "character", icon: "✨", title: "Charakter", fields: [
-    field("personality", "Persönlichkeit", "textarea", {wide:true}),
-    field("with_people", "Mit Menschen"), field("with_children", "Mit Kindern"),
-    field("with_animals", "Mit anderen Tieren"), field("activity_level", "Aktivitätsniveau"),
-    field("likes", "Vorlieben", "textarea"), field("fears", "Ängste / Unsicherheiten", "textarea")
+  { id: "character", icon: "✨", title: "Character", fields: [
+    field("personality", "Personality", "textarea", {wide:true}),
+    field("with_people", "With people"), field("with_children", "With children"),
+    field("with_animals", "With other animals"), field("activity_level", "Activity level"),
+    field("likes", "Likes", "textarea"), field("fears", "Fears / insecurities", "textarea")
   ]},
-  { id: "health", icon: "🩺", title: "Gesundheit & Tierarzt", fields: [
-    field("neutered", "Kastriert", "select", {options:[["yes","Ja"],["no","Nein"],["unknown","Unbekannt"]]}),
-    field("vaccinated", "Geimpft", "select", {options:[["yes","Ja"],["no","Nein"],["partial","Teilweise"],["unknown","Unbekannt"]]}),
-    field("microchipped", "Gechippt", "select", {options:[["yes","Ja"],["no","Nein"],["unknown","Unbekannt"]]}),
-    field("dewormed", "Entwurmt", "select", {options:[["yes","Ja"],["no","Nein"],["unknown","Unbekannt"]]}),
-    field("tested", "Tests – Überblick"), field("health_status", "Aktueller Gesundheitszustand", "textarea"),
-    field("special_care", "Besondere Versorgung", "textarea"), field("clinic", "Tierarzt / Klinik"),
-    field("clinic_location", "Ort der Klinik"), field("clinic_contact", "Kontakt", "text", {internal:true}),
-    field("last_visit", "Letzter Tierarztbesuch"), field("next_appointment", "Nächster Termin"),
-    field("conditions", "Wichtige Erkrankungen / Diagnosen", "textarea", {wide:true, hint:"Je Zeile: Diagnose | Zeitraum | Schweregrad | Status | Notizen"}),
-    field("treatments", "Behandlungen / Untersuchungen", "textarea", {wide:true, hint:"Je Zeile: Datum | Behandlung | Grund | Ergebnis | Klinik | nächster Schritt"}),
-    field("medication", "Medikamente", "textarea", {wide:true, hint:"Je Zeile: Medikament | Dosierung | Beginn | Ende | Grund | Notizen"}),
-    field("vaccinations", "Impfungen", "textarea"), field("tests", "Tests (FIV, FeLV, Giardia, weitere)", "textarea"),
-    field("procedures", "Operationen / Eingriffe", "textarea"), field("microchip_number", "Mikrochipnummer", "text", {internal:true}),
-    field("veterinary_notes", "Besondere tierärztliche Hinweise", "textarea", {wide:true, internal:true})
+  { id: "health", icon: "🩺", title: "Health & veterinary care", fields: [
+    field("neutered", "Neutered / spayed", "select", {options:[["yes","Yes"],["no","No"],["unknown","Unknown"]]}),
+    field("vaccinated", "Vaccinated", "select", {options:[["yes","Yes"],["no","No"],["partial","Partially"],["unknown","Unknown"]]}),
+    field("microchipped", "Microchipped", "select", {options:[["yes","Yes"],["no","No"],["unknown","Unknown"]]}),
+    field("dewormed", "Dewormed", "select", {options:[["yes","Yes"],["no","No"],["unknown","Unknown"]]}),
+    field("tested", "Tests — overview"), field("health_status", "Current health status", "textarea"),
+    field("special_care", "Special care", "textarea"), field("clinic", "Veterinarian / clinic"),
+    field("clinic_location", "Clinic location"), field("clinic_contact", "Contact", "text", {internal:true}),
+    field("last_visit", "Last veterinary visit"), field("next_appointment", "Next appointment"),
+    field("conditions", "Important conditions / diagnoses", "textarea", {wide:true, hint:"One per line: diagnosis | period | severity | status | notes"}),
+    field("treatments", "Treatments / examinations", "textarea", {wide:true, hint:"One per line: date | treatment | reason | result | clinic | next step"}),
+    field("medication", "Medication", "textarea", {wide:true, hint:"One per line: medication | dosage | start | end | reason | notes"}),
+    field("vaccinations", "Vaccinations", "textarea"), field("tests", "Tests (FIV, FeLV, Giardia, others)", "textarea"),
+    field("procedures", "Surgery / procedures", "textarea"), field("microchip_number", "Microchip number", "text", {internal:true}),
+    field("veterinary_notes", "Special veterinary notes", "textarea", {wide:true, internal:true})
   ]},
-  { id: "adoption", icon: "🏡", title: "Vermittlung & Patenschaft", fields: [
-    field("adoption_status", "Vermittlungsstatus"), field("looking_for", "Gesuchtes Zuhause", "textarea"),
-    field("not_suitable_for", "Nicht geeignet für", "textarea"), field("special_requirements", "Besondere Voraussetzungen", "textarea"),
-    field("available_from", "Vermittelbar ab"), field("adoption_fee_contract", "Schutzgebühr / Vertrag"),
-    field("sponsorship_possible", "Patenschaft möglich", "select", {options:[["yes","Ja"],["no","Nein"]]}),
-    field("sponsorship_status", "Patenschaftsstatus"), field("monthly_need", "Monatlicher Bedarf"),
-    field("support_needed", "Besondere Unterstützung", "textarea", {wide:true})
+  { id: "adoption", icon: "🏡", title: "Adoption & sponsorship", fields: [
+    field("adoption_status", "Adoption status"), field("looking_for", "Home needed", "textarea"),
+    field("not_suitable_for", "Not suitable for", "textarea"), field("special_requirements", "Special requirements", "textarea"),
+    field("available_from", "Available from"), field("adoption_fee_contract", "Adoption fee / contract"),
+    field("sponsorship_possible", "Sponsorship possible", "select", {options:[["yes","Yes"],["no","No"]]}),
+    field("sponsorship_status", "Sponsorship status"), field("monthly_need", "Monthly need"),
+    field("support_needed", "Special support needed", "textarea", {wide:true})
   ]},
-  { id: "media", icon: "📷", title: "Medien", fields: [
-    field("image_upload", "Bilder hochladen", "files", {wide:true, kind:"image", accept:"image/*", hint:"Das erste Bild wird als Hauptbild verwendet. Mehrere Bilder sind möglich."}),
-    field("main_image", "Hauptbild", "text", {readonly:true, hint:"Wird beim Hochladen automatisch eingetragen."}),
-    field("images", "Weitere Bilder", "textarea", {readonly:true, hint:"Bildpfade werden automatisch übernommen."}),
-    field("video_upload", "Videos hochladen", "files", {wide:true, kind:"video", accept:"video/*", hint:"Videos per Drag-and-drop oder Dateiauswahl hinzufügen. Große Videos benötigen beim Erstellen des ZIP-Pakets entsprechend viel Arbeitsspeicher; für den Prototyp möglichst komprimierte Dateien verwenden."}),
-    field("videos", "Videodateien", "textarea", {readonly:true}),
-    field("audio_upload", "Audio und Sprachnotizen hochladen", "files", {wide:true, kind:"audio", accept:"audio/*", hint:"Zum Beispiel Sprachnotizen der Pflegestelle."}),
-    field("audio", "Audiodateien", "textarea", {readonly:true})
+  { id: "media", icon: "📷", title: "Media", fields: [
+    field("image_upload", "Upload images", "files", {wide:true, kind:"image", accept:"image/*", hint:"The first image becomes the main image. Multiple images are supported."}),
+    field("main_image", "Main image", "text", {readonly:true, hint:"Filled automatically after upload."}),
+    field("images", "Additional images", "textarea", {readonly:true, hint:"Image paths are added automatically."}),
+    field("video_upload", "Upload videos", "files", {wide:true, kind:"video", accept:"video/*", hint:"Add videos by drag and drop or file selection. Large videos require corresponding memory while the ZIP is created; compressed files are recommended for this prototype."}),
+    field("videos", "Video files", "textarea", {readonly:true}),
+    field("audio_upload", "Upload audio and voice notes", "files", {wide:true, kind:"audio", accept:"audio/*", hint:"For example, voice notes from a foster home."}),
+    field("audio", "Audio files", "textarea", {readonly:true})
   ]},
-  { id: "publishing", icon: "🌍", title: "Website & Social Media", fields: [
-    field("instagram", "Instagram-Texte", "textarea", {wide:true, hint:"Sprachfassungen werden im Export nach den gewählten Ausgabesprachen angelegt."}),
-    field("facebook", "Facebook-Texte", "textarea", {wide:true}),
+  { id: "publishing", icon: "🌍", title: "Website & social media", fields: [
+    field("instagram", "Instagram copy", "textarea", {wide:true, hint:"The export creates language sections for the selected output languages."}),
+    field("facebook", "Facebook copy", "textarea", {wide:true}),
     field("hashtags", "Hashtags", "textarea", {wide:true}),
-    field("website", "Website-Texte", "textarea", {wide:true})
+    field("website", "Website copy", "textarea", {wide:true})
   ]},
-  { id: "collector", icon: "🏅", title: "Sammlerkarte (optional)", fields: [
-    field("collection_id", "Collection-ID"), field("collection_name", "Name der Kollektion"),
-    field("character_class", "Charakterklasse"), field("accessory", "Accessoire"),
-    field("guiding_phrase", "Leitsatz"), field("rarity", "Seltenheit"),
-    field("card_number", "Kartennummer"), field("edition", "Edition")
+  { id: "collector", icon: "🏅", title: "Collector card (optional)", fields: [
+    field("collection_id", "Collection ID"), field("collection_name", "Collection name"),
+    field("character_class", "Character class"), field("accessory", "Accessory"),
+    field("guiding_phrase", "Guiding phrase"), field("rarity", "Rarity"),
+    field("card_number", "Card number"), field("edition", "Edition")
   ]},
-  { id: "internal", icon: "🔒", title: "Interne Notizen & Statusverlauf", fields: [
-    field("organization_notes", "Notizen der Organisation", "textarea", {wide:true, internal:true}),
-    field("foster_notes", "Notizen der Pflegestelle", "textarea", {wide:true, internal:true}),
-    field("important_contacts", "Wichtige Kontakte", "textarea", {wide:true, internal:true}),
-    field("status_history", "Statusverlauf", "textarea", {wide:true, internal:true, hint:"Je Zeile: Datum | Status | Notiz"}),
-    field("last_updated", "Zuletzt aktualisiert", "date", {internal:true})
+  { id: "internal", icon: "🔒", title: "Internal notes & status history", fields: [
+    field("organization_notes", "Organization notes", "textarea", {wide:true, internal:true}),
+    field("foster_notes", "Foster home notes", "textarea", {wide:true, internal:true}),
+    field("important_contacts", "Important contacts", "textarea", {wide:true, internal:true}),
+    field("status_history", "Status history", "textarea", {wide:true, internal:true, hint:"One per line: date | status | note"}),
+    field("last_updated", "Last updated", "date", {internal:true})
   ]}
 ];
 
 const form = document.querySelector("#animalForm");
 const preview = document.querySelector("#markdownPreview");
-const stateKey = "graceways-animal-profile-draft-v1";
+const stateKey = "graceways-animal-profile-draft-v2-en";
 const sequenceStateKey = "graceways-id-sequences-v1";
 
 function escapeHtml(value) {
@@ -111,16 +111,16 @@ function escapeHtml(value) {
 
 function renderField(f) {
   const classes = ["field", f.wide ? "wide" : "", f.required ? "required" : ""].filter(Boolean).join(" ");
-  const internal = f.internal ? '<span class="internal-badge">INTERN</span>' : "";
+  const internal = f.internal ? '<span class="internal-badge">INTERNAL</span>' : "";
   const hint = f.hint ? `<small>${escapeHtml(f.hint)}</small>` : "";
   let input;
   if (f.type === "textarea") input = `<textarea id="${f.id}" name="${f.id}" ${f.readonly ? "readonly" : ""}></textarea>`;
-  else if (f.type === "select") input = `<select id="${f.id}" name="${f.id}"><option value="">Bitte auswählen</option>${f.options.map(([v,l]) => `<option value="${v}">${l}</option>`).join("")}</select>`;
+  else if (f.type === "select") input = `<select id="${f.id}" name="${f.id}"><option value="">Please select</option>${f.options.map(([v,l]) => `<option value="${v}">${l}</option>`).join("")}</select>`;
   else if (f.type === "checks") input = `<div class="check-grid">${f.options.map(([v,l]) => `<label class="check-option"><input type="checkbox" name="${f.id}" value="${v}"><span>${l}</span></label>`).join("")}</div>`;
   else if (f.type === "files") {
-    const title = f.kind === "video" ? "Videos hierher ziehen oder anklicken" : f.kind === "audio" ? "Audio hierher ziehen oder anklicken" : "Fotos hierher ziehen oder anklicken";
-    const formats = f.kind === "video" ? "MP4, WebM oder MOV" : f.kind === "audio" ? "MP3, M4A, WAV oder OGG" : "JPG, PNG oder WebP";
-    input = `<div class="drop-zone" id="${f.id}DropZone"><input id="${f.id}" name="${f.id}" type="file" accept="${f.accept}" multiple><label for="${f.id}"><strong>${title}</strong><span>${formats} · mehrere Dateien möglich</span></label></div><div class="image-previews" id="${f.id}Previews"></div>`;
+    const title = f.kind === "video" ? "Drop videos here or click to select" : f.kind === "audio" ? "Drop audio here or click to select" : "Drop photos here or click to select";
+    const formats = f.kind === "video" ? "MP4, WebM, MOV" : f.kind === "audio" ? "MP3, M4A, WAV, OGG" : "JPG, PNG, WebP";
+    input = `<div class="drop-zone" id="${f.id}DropZone"><input id="${f.id}" name="${f.id}" type="file" accept="${f.accept}" multiple><label for="${f.id}"><strong>${title}</strong><span>${formats} · multiple files supported</span></label></div><div class="image-previews" id="${f.id}Previews"></div>`;
   }
   else input = `<input id="${f.id}" name="${f.id}" type="${f.type}" ${f.required ? "required" : ""} ${f.readonly ? "readonly" : ""}>`;
   return `<div class="${classes}"><label ${f.type === "checks" ? "" : `for="${f.id}"`}>${f.label}${internal}</label>${input}${hint}</div>`;
@@ -205,8 +205,8 @@ function renderMedia(kind) {
   const box = document.querySelector(`#${fieldId}Previews`);
   if (!box) return;
   box.innerHTML = uploadedMedia[kind].map((item, index) => kind === "image"
-    ? `<div class="image-preview"><img src="${item.url}" alt="Vorschau ${index + 1}"><span>${escapeHtml(item.file.name)}</span><button type="button" data-remove-media="${index}" aria-label="Bild entfernen">×</button></div>`
-    : `<div class="media-preview">${kind === "video" ? `<video src="${item.url}" controls aria-label="Videovorschau"></video>` : `<audio src="${item.url}" controls aria-label="Audiovorschau"></audio>`}<strong>${escapeHtml(item.file.name)}</strong><button type="button" data-remove-media="${index}" aria-label="Datei entfernen">×</button></div>`).join("");
+    ? `<div class="image-preview"><img src="${item.url}" alt="Preview ${index + 1}"><span>${escapeHtml(item.file.name)}</span><button type="button" data-remove-media="${index}" aria-label="Remove image">×</button></div>`
+    : `<div class="media-preview">${kind === "video" ? `<video src="${item.url}" controls aria-label="Video preview"></video>` : `<audio src="${item.url}" controls aria-label="Audio preview"></audio>`}<strong>${escapeHtml(item.file.name)}</strong><button type="button" data-remove-media="${index}" aria-label="Remove file">×</button></div>`).join("");
   box.querySelectorAll("[data-remove-media]").forEach(button => button.addEventListener("click", () => {
     const index = Number(button.dataset.removeMedia); URL.revokeObjectURL(uploadedMedia[kind][index].url); uploadedMedia[kind].splice(index, 1); syncMediaFields(kind);
   }));
@@ -239,9 +239,9 @@ function lines(value) { return value ? value.split("\n").map(v => v.trim()).filt
 function bullets(value) { const list = lines(value); return list.length ? list.map(v => `- ${v}`).join("\n") : "- "; }
 function val(value) { return value || ""; }
 
-function languageBlocks(title, content, selected) {
-  const active = selected.length ? selected : ["DE", "EN"];
-  return `## ${title}\n\n${active.map(code => `### ${code}\n\n${code === "DE" ? val(content) : "<!-- Übersetzung wird nach Prüfung ergänzt. -->"}`).join("\n\n")}`;
+function languageBlocks(title, content, selected, contentLanguage) {
+  const active = selected.length ? selected : [contentLanguage || "EN"];
+  return `## ${title}\n\n${active.map(code => `### ${code}\n\n${code === (contentLanguage || "EN") ? val(content) : "<!-- Translation to be added after review. -->"}`).join("\n\n")}`;
 }
 
 function markdown(d) {
@@ -438,7 +438,7 @@ ${bullets(d.audio)}
 
 ---
 
-${languageBlocks("Social Media · Instagram", d.instagram, langs)}
+${languageBlocks("Social Media · Instagram", d.instagram, langs, d.content_language)}
 
 ### Hashtags
 
@@ -446,11 +446,11 @@ ${val(d.hashtags)}
 
 ---
 
-${languageBlocks("Social Media · Facebook", d.facebook, langs)}
+${languageBlocks("Social Media · Facebook", d.facebook, langs, d.content_language)}
 
 ---
 
-${languageBlocks("Website", d.website, langs)}
+${languageBlocks("Website", d.website, langs, d.content_language)}
 
 ---
 
@@ -469,7 +469,7 @@ ${languageBlocks("Website", d.website, langs)}
 
 | Date | Status | Notes |
 |---|---|---|
-${lines(d.status_history).length ? lines(d.status_history).map(x => `| ${x.split("|").map(y=>y.trim()).join(" | ")} |`).join("\n") : "|  | aufgenommen |  |\n|  | in_behandlung |  |\n|  | sucht_zuhause |  |\n|  | reserviert |  |\n|  | vermittelt |  |"}
+${lines(d.status_history).length ? lines(d.status_history).map(x => `| ${x.split("|").map(y=>y.trim()).join(" | ")} |`).join("\n") : "|  | intake |  |\n|  | in_treatment |  |\n|  | seeking_a_home |  |\n|  | reserved |  |\n|  | adopted |  |"}
 `;
 }
 
@@ -483,11 +483,11 @@ function update() {
   const fresh = values();
   preview.textContent = markdown(fresh);
   document.querySelector("#previewTitle").textContent = fresh.name || "AnimalProfile";
-  document.querySelector("#previewStatus").textContent = fresh.status ? fresh.status.replaceAll("_", " ") : "Entwurf";
+  document.querySelector("#previewStatus").textContent = fresh.status ? fresh.status.replaceAll("_", " ") : "Draft";
   const snapshotImage = uploadedMedia.image[0]?.url;
   document.querySelector("#animalSnapshot").innerHTML = fresh.name
     ? `<div class="snapshot-mark">${snapshotImage ? `<img class="snapshot-image" src="${snapshotImage}" alt="">` : fresh.species === "dog" ? "🐶" : fresh.species === "cat" ? "🐱" : "🐾"}</div><div><strong>${escapeHtml(fresh.name)}</strong><p>${escapeHtml([fresh.id, fresh.species, fresh.location].filter(Boolean).join(" · "))}</p></div>`
-    : '<div class="snapshot-mark">🐾</div><div><strong>Noch kein Tier erfasst</strong><p>Die Vorschau wächst mit deinen Angaben.</p></div>';
+    : '<div class="snapshot-mark">🐾</div><div><strong>No animal added yet</strong><p>The preview grows as you enter information.</p></div>';
 
   const required = sections.flatMap(s => s.fields).filter(f => f.required);
   const done = required.filter(f => fresh[f.id] && (Array.isArray(fresh[f.id]) ? fresh[f.id].length : true)).length;
@@ -518,7 +518,7 @@ function validateRequired() {
     }
   }));
   if (missing.length) {
-    showMessage(`Bitte ergänze zuerst: ${missing.join(", ")}.`);
+    showMessage(`Please complete these required fields first: ${missing.join(", ")}.`);
     form.querySelector(".invalid")?.scrollIntoView({behavior:"smooth", block:"center"});
     return false;
   }
@@ -569,7 +569,7 @@ async function downloadCompletePackage() {
   const d = values(); const files = [{name:`${d.slug || "animal-profile"}.md`, data:new TextEncoder().encode(markdown(d))}];
   for (const kind of ["image", "video", "audio"]) for (const item of uploadedMedia[kind]) files.push({name:item.path, data:new Uint8Array(await item.file.arrayBuffer())});
   triggerDownload(makeZip(files), `${d.slug || "animal-profile"}-graceways.zip`); reserveCurrentId(d);
-  showMessage(`Komplettpaket mit ${files.length - 1} Mediendatei(en) wurde erstellt.`, true);
+  showMessage(`Complete package created with ${files.length - 1} media file(s).`, true);
 }
 
 function applyData(data) {
@@ -581,21 +581,21 @@ function applyData(data) {
 }
 
 const demo = {
-  organization_id:"SC", organization_name:"SunCats", country_code:"EL", country_name:"Griechenland",
-  profile_number:"7", id:"EL-SC-BC-007", interface_language:"DE", content_language:"DE", output_languages:["DE","EN","EL"],
-  name:"Sissi", species:"cat", status:"sucht_zuhause", gender:"female", age:"ca. 2 Jahre", location:"Korinth, Griechenland",
+  organization_id:"SC", organization_name:"SunCats", country_code:"EL", country_name:"Greece",
+  profile_number:"7", id:"EL-SC-BC-007", interface_language:"EN", content_language:"EN", output_languages:["EN","DE","EL"],
+  name:"Sissi", species:"cat", status:"seeking_a_home", gender:"female", age:"about 2 years", location:"Corinth, Greece",
   collection_id:"BC", collection_name:"Bridge Cats", card_number:"007", edition:"First Edition",
-  original_story:"Sissi wurde nahe der Brücke von Korinth entdeckt. Anfangs hielt sie Abstand, doch sie kam jeden Tag ein wenig näher. Inzwischen sucht sie die Nähe vertrauter Menschen und wartet auf ein dauerhaftes Zuhause.",
-  heart_note:"Sissi trägt eine stille Stärke in sich. Sie hat gelernt, wieder Vertrauen zu fassen, ohne ihre vorsichtige Art zu verlieren. Wer ihr Zeit schenkt, bekommt eine sanfte und treue Begleiterin.",
-  personality:"Sanft, aufmerksam und zunächst vorsichtig.", with_people:"Nach kurzer Eingewöhnung sehr zugewandt", with_children:"Ruhige, verständige Kinder", with_animals:"Mit freundlichen Katzen verträglich", activity_level:"Mittel", likes:"Sonnenplätze\nLeise Ansprache\nSpielangeln", fears:"Schnelle Bewegungen und laute Geräusche",
-  current_situation:"Sissi lebt an einer betreuten Futterstelle und soll auf eine Pflegestelle umziehen.",
-  health_status:"Allgemeinzustand gut; tierärztliche Abschlusskontrolle ausstehend.", neutered:"yes", vaccinated:"partial", microchipped:"no", dewormed:"yes",
-  adoption_status:"sucht_zuhause", looking_for:"Ruhiges Zuhause mit geduldigen Menschen.", sponsorship_possible:"yes",
-  slogans:"Vertrauen wächst leise.\nVon der Straße in das Herz.", main_image:"images/sissi-main.jpg",
-  instagram:"Sissi wartet in Korinth auf Menschen, die ihr Zeit und Sicherheit schenken. Aus vorsichtiger Entfernung wurde Tag für Tag ein kleines Stück Vertrauen.",
-  facebook:"Sissi ist eine sanfte junge Katze aus Korinth. Für sie suchen wir ein ruhiges Zuhause, in dem sie in ihrem eigenen Tempo ankommen darf.",
-  hashtags:"#GraceWays #SunCats #AdoptDontShop #Tierschutz", website:"Sissi sucht ein ruhiges und liebevolles Zuhause bei geduldigen Menschen.",
-  last_updated:new Date().toISOString().slice(0,10), status_history:`${new Date().toISOString().slice(0,10)} | sucht_zuhause | Profil als Build-Week-Beispiel angelegt`
+  original_story:"Sissi was discovered near the bridge in Corinth. At first she kept her distance, but every day she came a little closer. She now seeks the company of people she trusts and is waiting for a permanent home.",
+  heart_note:"Sissi carries a quiet strength. She has learned to trust again without losing her careful nature. Give her time, and she will become a gentle and loyal companion.",
+  personality:"Gentle, attentive and initially cautious.", with_people:"Very affectionate after a short adjustment period", with_children:"Calm, considerate children", with_animals:"Compatible with friendly cats", activity_level:"Moderate", likes:"Sunny places\nGentle voices\nFishing-rod toys", fears:"Sudden movements and loud noises",
+  current_situation:"Sissi lives at a managed feeding station and is waiting to move into foster care.",
+  health_status:"General condition is good; final veterinary check is pending.", neutered:"yes", vaccinated:"partial", microchipped:"no", dewormed:"yes",
+  adoption_status:"seeking_a_home", looking_for:"A quiet home with patient people.", sponsorship_possible:"yes",
+  slogans:"Trust grows quietly.\nFrom the street into the heart.", main_image:"images/sissi-main.jpg",
+  instagram:"Sissi is waiting in Corinth for people who will give her time and safety. Day by day, careful distance has grown into trust.",
+  facebook:"Sissi is a gentle young cat from Corinth. We are looking for a quiet home where she can settle in at her own pace.",
+  hashtags:"#GraceWays #SunCats #AdoptDontShop #AnimalRescue", website:"Sissi is looking for a quiet, loving home with patient people.",
+  last_updated:new Date().toISOString().slice(0,10), status_history:`${new Date().toISOString().slice(0,10)} | seeking_a_home | Added as a Build Week example profile`
 };
 
 renderForm();
@@ -612,9 +612,9 @@ form.addEventListener("change", update);
 for (const fieldName of ["country_code", "organization_id", "collection_id"]) form.elements[fieldName].addEventListener("input", () => { form.elements.profile_number.value = nextProfileNumber(values()); });
 document.querySelectorAll(".progress-link").forEach(btn => btn.addEventListener("click", () => { const target = document.querySelector(`#${btn.dataset.target}`); target.open = true; target.scrollIntoView({behavior:"smooth", block:"start"}); }));
 document.querySelector("#loadDemo").addEventListener("click", () => applyData(demo));
-document.querySelector("#clearForm").addEventListener("click", () => { if (confirm("Alle Eingaben in diesem Browser löschen?")) { for (const kind of ["image", "video", "audio"]) { uploadedMedia[kind].forEach(item => URL.revokeObjectURL(item.url)); uploadedMedia[kind] = []; renderMedia(kind); } form.reset(); localStorage.removeItem(stateKey); update(); } });
+document.querySelector("#clearForm").addEventListener("click", () => { if (confirm("Clear all entries stored in this browser?")) { for (const kind of ["image", "video", "audio"]) { uploadedMedia[kind].forEach(item => URL.revokeObjectURL(item.url)); uploadedMedia[kind] = []; renderMedia(kind); } form.reset(); localStorage.removeItem(stateKey); update(); } });
 document.querySelector("#downloadMarkdown").addEventListener("click", () => {
-  if (!validateRequired()) return; const d = values(); reserveCurrentId(d); triggerDownload(new Blob([markdown(d)], {type:"text/markdown;charset=utf-8"}), `${d.slug || "animal-profile"}.md`); showMessage("Markdown-Tierakte wurde erstellt.", true);
+  if (!validateRequired()) return; const d = values(); reserveCurrentId(d); triggerDownload(new Blob([markdown(d)], {type:"text/markdown;charset=utf-8"}), `${d.slug || "animal-profile"}.md`); showMessage("Markdown animal record created.", true);
 });
 document.querySelector("#downloadPackage").addEventListener("click", downloadCompletePackage);
 const copyMarkdownButton = document.querySelector("#copyMarkdown");
@@ -622,10 +622,10 @@ copyMarkdownButton.addEventListener("click", async () => {
   const old = copyMarkdownButton.textContent;
   try {
     await navigator.clipboard.writeText(preview.textContent);
-    copyMarkdownButton.textContent = "Kopiert ✓";
+    copyMarkdownButton.textContent = "Copied ✓";
     setTimeout(() => { copyMarkdownButton.textContent = old; }, 1400);
   } catch {
-    showMessage("Die Markdown-Vorschau konnte nicht automatisch kopiert werden. Bitte markiere den Text und kopiere ihn manuell.");
+    showMessage("The Markdown preview could not be copied automatically. Please select the text and copy it manually.");
   }
 });
 
