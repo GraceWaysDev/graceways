@@ -64,7 +64,7 @@ button { cursor: pointer; }
 .eyebrow.dark { color: var(--green); }
 .hero .eyebrow { color: #315f82; }
 .hero-copy > p:not(.eyebrow) { max-width: 610px; color: #445e72; }
-.hero-lead { margin: 20px 0 0; font: 500 clamp(20px, 2vw, 27px)/1.45 Georgia, serif; letter-spacing: -.012em; }
+.hero-lead { margin: clamp(110px, 8vw, 140px) 0 0; font: 500 clamp(20px, 2vw, 27px)/1.45 Georgia, serif; letter-spacing: -.012em; }
 .hero-note { margin: 18px 0 0; padding-top: 16px; border-top: 1px solid rgba(23,58,83,.18); font-size: 14px; line-height: 1.65; }
 
 .button { border: 0; border-radius: 12px; padding: 11px 16px; font-weight: 750; transition: transform .15s, background .15s; }
@@ -216,14 +216,11 @@ footer a { color: var(--ink); }
 
 .imprint { width: min(1180px, calc(100% - 40px)); margin: 82px auto 0; padding: 36px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .imprint h2 { font-size: clamp(32px, 4vw, 48px); }
-.imprint-warning { max-width: 800px; margin: 16px 0 30px; padding: 14px 16px; border-left: 3px solid var(--gold); color: #72591f; background: #f5f1e8; font-size: 13px; }
-.imprint-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.imprint-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .imprint-grid > div { padding: 25px 26px; }
 .imprint-grid > div + div { border-left: 1px solid var(--line); }
 .imprint h3 { margin: 0 0 12px; font: 600 20px Georgia, serif; }
 .imprint address, .imprint-grid p { color: var(--muted); font-size: 13px; font-style: normal; }
-.imprint-small { margin-top: 17px; font-size: 11px !important; }
-.imprint-legal { margin: 18px 0 0; color: var(--muted); font-size: 11px; }
 
 @media (max-width: 1180px) {
   .workspace { grid-template-columns: 190px 1fr; }
@@ -243,7 +240,7 @@ footer a { color: var(--ink); }
   .hero-visual { position: relative; inset: auto; }
   .hero-visual img { width: 100%; height: auto; object-fit: contain; }
   .hero-copy { width: min(100% - 28px, 680px); margin: 0 auto; padding: 34px 0 50px; }
-  .hero-lead { font-size: clamp(20px, 6vw, 27px); }
+  .hero-lead { margin-top: 20px; font-size: clamp(20px, 6vw, 27px); }
   .tool-actions { align-items: stretch; flex-direction: column; }
   .workspace { width: min(100% - 22px, 680px); grid-template-columns: 1fr; margin-top: 0; }
   .feature-grid, .open-source, .vision { grid-template-columns: 1fr; }
