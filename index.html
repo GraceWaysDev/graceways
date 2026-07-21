@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GraceWays – offene digitale Tierakten für Tierheime und Tierschutzvereine.">
+  <title>GraceWays · Tierakten für Tierschutzorganisationen</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="topbar" aria-label="Hauptnavigation">
+      <a class="brand" href="#top" aria-label="GraceWays Startseite">
+        <span class="brand-mark"><span>G</span></span>
+        <span class="brand-copy"><strong>GraceWays</strong></span>
+      </a>
+      <div class="nav-links">
+        <a href="#what">Über GraceWays</a>
+        <a href="#workflow-title">So funktioniert es</a>
+        <a href="#vision">Vision</a>
+        <a href="#profile">Animal Profile erstellen</a>
+      </div>
+    </nav>
+    <div class="hero-content" id="top">
+      <div class="hero-visual">
+        <img src="assets/graceways-water-animals.jpg" alt="Hund und Katze in fließenden blauen Wasserformen">
+      </div>
+      <div class="hero-copy">
+        <p class="eyebrow">Kostenlose Open-Source-Plattform für Tierheime und Tierschutzvereine</p>
+        <p class="hero-lead">Tierdaten einmal erfassen und alles Wichtige daraus erstellen: GraceWays bündelt alle Tierdaten und Medien in einer einheitlichen Akte – für Vermittlung, Website und Social Media in mehreren Sprachen.</p>
+        <p class="hero-note">Es ist kostenlos und weltweit verfügbar und die Daten verbleiben ausschließlich beim Verein.</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="purpose" id="what">
+    <div class="section-heading">
+      <p class="eyebrow dark">Über GraceWays</p>
+      <p>Viele Informationen über ein Tier liegen verteilt in Nachrichten, Notizen, Tabellen, Bildern, Videos und auf verschiedenen Geräten. GraceWays führt sie über eine leicht verständliche Eingabemaske zusammen und speichert sie als offene, dauerhaft lesbare <strong>.md-Datei (Markdown-Datei)</strong>.</p>
+      <p>So kann der Verein jederzeit auf die Daten und zugehörigen Medien eines Tieres zurückgreifen. Einheitlich aufgebaute Tierakten lassen sich außerdem gezielt durchsuchen und filtern – zum Beispiel nach Tieren, die noch nicht vermittelt sind.</p>
+    </div>
+    <div class="feature-grid">
+      <article><span>01</span><h3>Strukturiert bewahren</h3><p>Geschichte, Charakter, medizinische Angaben, Vermittlungsstatus und Medien werden in einer einheitlichen AnimalProfile-Datei zusammengeführt.</p></article>
+      <article><span>02</span><h3>Mehrsprachig erzählen</h3><p>Aus den bestätigten Angaben können Heart Notes, Vermittlungstexte sowie Inhalte für Website und soziale Medien in ausgewählten Sprachen entstehen.</p></article>
+      <article><span>03</span><h3>Unabhängig bleiben</h3><p>Die Akte gehört dem Verein. Sie ist als lesbare Markdown-Datei exportierbar und bleibt auch ohne GraceWays nutzbar.</p></article>
+      <article><span>04</span><h3>Schnell wiederfinden</h3><p>Einheitliche Felder ermöglichen es, Tierakten nach Status, Tierart, Standort oder medizinischen Angaben zu durchsuchen und zu filtern.</p></article>
+      <article><span>05</span><h3>Medien zusammenhalten</h3><p>Bilder, Videos und Audioaufnahmen werden der richtigen Tierakte zugeordnet und können gemeinsam mit der Markdown-Datei als vollständiges Paket gespeichert werden.</p></article>
+      <article><span>06</span><h3>Gezielt veröffentlichen</h3><p>Aus mehreren Tierakten lassen sich zum Beispiel automatisch Instagram-Beiträge für alle noch nicht vermittelten Katzen oder für Tiere auf Pflegestellensuche erstellen. Auch Webseiten können gezielt Ansichten zeigen – etwa alle Kater, alle Hunde an einem bestimmten Standort oder alle Tiere, die ein Zuhause suchen.</p></article>
+      <article class="feature-wide"><span>07 · Geplanter Vereinsbetrieb</span><div><h3>Gemeinsam dokumentieren</h3><p>Mehrere vom Verein freigegebene Personen können dieselbe Tierakte ergänzen: Pflegestellen tragen Beobachtungen ein, Ehrenamtliche laden Bilder, Videos oder Audionotizen hoch und Tierärztinnen ergänzen medizinische Angaben. Die Tier-ID ordnet jeden Beitrag dem richtigen Tier zu; Medien werden automatisch in den vorgesehenen Bilder- und Medienordnern abgelegt. Der Verein prüft und bestätigt die Inhalte vor der Veröffentlichung.</p></div></article>
+    </div>
+  </section>
+
+  <section class="workflow" aria-labelledby="workflow-title">
+    <div class="section-heading">
+      <p class="eyebrow dark">So funktioniert GraceWays</p>
+      <h2 id="workflow-title">Von der Eingabe zur Tierakte auf dem eigenen Rechner.</h2>
+      <p>GraceWays funktioniert im aktuellen Prototyp direkt im Browser – ohne Anmeldung und ohne Server. Der Verein behält die Kontrolle darüber, wann und wo die Tierakte gespeichert wird.</p>
+    </div>
+    <ol class="workflow-steps">
+      <li><span>1</span><div><strong>Erfassen</strong><p>Geschichte, Charakter, Gesundheit und Vermittlungsangaben werden in die Universalmaske eingetragen. Bilder, Videos und Audio lassen sich per Drag-and-drop hinzufügen.</p></div></li>
+      <li><span>2</span><div><strong>ID erzeugen</strong><p>Aus Land, Verein, Sammlung und laufender Nummer entsteht eine eindeutige Tier-ID, zum Beispiel <code>EL-SC-BC-007</code>. Der Prototyp merkt sich die Nummer in diesem Browser.</p></div></li>
+      <li><span>3</span><div><strong>Lokal prüfen</strong><p>Texteingaben werden nur in diesem Browser zwischengespeichert. Die Markdown-Vorschau wächst sofort mit; interne Angaben sind besonders gekennzeichnet.</p></div></li>
+      <li><span>4</span><div><strong>Herunterladen</strong><p>„Nur Markdown“ speichert eine einzelne <code>.md</code>-Datei. „Komplette Tierakte“ erstellt eine ZIP-Datei mit Markdown, Bildern, Videos und Audio.</p></div></li>
+      <li><span>5</span><div><strong>Auf dem Rechner ablegen</strong><p>Der Browser speichert den Download gewöhnlich im Download-Ordner oder fragt nach einem Ziel. Die ZIP-Datei wird anschließend in den gewünschten Vereinsordner entpackt.</p></div></li>
+      <li><span>6</span><div><strong>Optional Obsidian nutzen</strong><p>Der Tierakten-Ordner kann als Obsidian-Vault geöffnet werden. Dort bleiben die Markdown-Dateien lokal lesbar, durchsuchbar und über ihre Eigenschaften filterbar.</p></div></li>
+    </ol>
+    <div class="storage-guide">
+      <div>
+        <p class="eyebrow dark">So sieht der Download aus</p>
+        <h3>Eine verständliche Ordnerstruktur</h3>
+        <pre class="file-tree" aria-label="Beispielhafte Ordnerstruktur">sissi-graceways.zip
+├── sissi.md
+├── images/
+│   ├── sissi-main.jpg
+│   └── sissi-02.jpg
+└── media/
+    ├── video-01.mp4
+    └── audio-01.mp3</pre>
+        <p>Die <code>.md</code>-Datei enthält die strukturierten Tierdaten. Die Medien bleiben als normale Dateien erhalten und werden über ihre Pfade mit der Akte verbunden.</p>
+      </div>
+      <div>
+        <p class="eyebrow dark">Obsidian ist nur eine zusätzliche Möglichkeit</p>
+        <h3>GraceWays funktioniert vollständig ohne Obsidian</h3>
+        <p>Wer einfach Tierdaten in die Felder eintragen und Bilder, Videos oder Audio per Drag-and-drop hinzufügen möchte, braucht kein weiteres Programm. GraceWays strukturiert die Angaben, ordnet die Medien den richtigen Ordnern zu und erstellt die fertige Tierakte zum Herunterladen.</p>
+        <p>Obsidian ist erst dann interessant, wenn ein Verein viele gespeicherte Tierakten auf dem eigenen Rechner gemeinsam durchsuchen möchte. Es kann den vorhandenen Tierakten-Ordner als „Vault“ öffnen und die Angaben am Anfang jeder GraceWays-Datei als Eigenschaften erkennen.</p>
+        <p>Mit der optionalen Funktion „Bases“ lassen sich daraus Tabellen, Karten und gefilterte Ansichten bilden – zum Beispiel alle nicht vermittelten Katzen oder alle Tiere auf Pflegestellensuche.</p>
+        <a class="text-link" href="https://obsidian.md/help/bases" target="_blank" rel="noreferrer">Optionale Obsidian-Funktionen kennenlernen →</a>
+      </div>
+    </div>
+    <p class="workflow-note"><strong>Wichtig:</strong> Hochgeladene Medien sind erst dauerhaft gesichert, wenn die komplette Tierakte als ZIP-Datei heruntergeladen wurde. GraceWays ersetzt keine Datensicherung; der Vereinsordner sollte regelmäßig auf einem zweiten Datenträger gesichert werden.</p>
+  </section>
+
+  <section class="open-source" id="open-source">
+    <div class="source-mark" aria-hidden="true">{ }</div>
+    <div>
+      <p class="eyebrow">Open Source · gemeinsam entwickeln</p>
+      <h2>Eine offene Full-Stack-Grundlage für Tierheime</h2>
+      <p>GraceWays lädt Entwicklerinnen und Entwickler ein, eine kostenlose, modulare Plattform für Tierheime und Tierschutzvereine mitzugestalten. Beiträge sind unter anderem in Frontend, Backend, Datenmodell, Medienverwaltung, Übersetzung, Barrierefreiheit, Datenschutz und Dokumentation möglich.</p>
+      <p>Die Vision sind vollständige Full-Stack-Websites aus einer gemeinsamen offenen Grundlage: mit Tierakten, Benutzerrollen, gemeinsamer Medienablage, Vermittlung, Patenschaften, mehrsprachigen Inhalten und automatisierten Veröffentlichungen. Jeder Verein behält dabei seine eigene Domain, Gestaltung, Identität und Daten.</p>
+      <p>Der aktuelle Prototyp beginnt mit der universellen Tierakte und dem lokalen Export. Die nächsten Ausbaustufen verbinden mehrere berechtigte Mitarbeitende, Tierakten und Veröffentlichungen zu einer vollständigen Vereinsplattform. Jede gemeinsam entwickelte Verbesserung kann anschließend vielen Organisationen zugutekommen.</p>
+      <div class="source-principles"><span>Open-Source-Code</span><span>Modularer Full Stack</span><span>Eigene Datenhoheit</span><span>Für Vereine weltweit</span></div>
+    </div>
+  </section>
+
+  <section class="vision" id="vision">
+    <div class="vision-copy">
+      <p class="eyebrow dark">Die Vision</p>
+      <h2>Eine Weltkarte voller Herzen.</h2>
+      <p>Jedes Herz steht für einen selbstständigen Verein. Klickt man darauf, werden seine Tiere, Projekte und Möglichkeiten zu helfen sichtbar. Niemand gibt seine Identität auf – und doch arbeiten alle auf einer gemeinsamen, offenen Grundlage.</p>
+      <blockquote>„Wir verbinden Menschen, damit mehr Tiere gerettet werden können.“</blockquote>
+      <p>SunCats ist der erste Knoten dieses Netzwerks. Weitere Vereine, Tierheime und Helfende können hinzukommen. So wächst keine zentrale Organisation, sondern eine Gemeinschaft, in der jeder etwas beitragen kann.</p>
+    </div>
+    <div class="heart-map" aria-label="Symbolische Weltkarte mit verbundenen Tierschutzvereinen">
+      <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+      <span class="heart h1">♥<small>SunCats</small></span>
+      <span class="heart h2">♥<small>Pro Canes</small></span>
+      <span class="heart h3">♥<small>Tierheim</small></span>
+      <span class="heart h4">♥<small>Partner</small></span>
+      <strong>GraceWays</strong>
+    </div>
+  </section>
+
+  <div class="tool-heading" id="profile">
+    <p class="eyebrow dark">Die digitale Tierakte von GraceWays</p>
+    <h2>Universal Animal Profile</h2>
+    <p>Eine vollständige digitale Tierakte für unterschiedliche Tierarten, Organisationen und Länder.</p>
+    <div class="tool-actions">
+      <button class="button secondary" id="loadDemo" type="button">Beispielakte Sissi ansehen</button>
+      <button class="button quiet" id="clearForm" type="button">Neue Tierakte beginnen</button>
+    </div>
+  </div>
+
+  <main class="workspace">
+    <aside class="sidebar" aria-label="Fortschritt">
+      <p class="sidebar-title">Universalprofil</p>
+      <div id="progressNav"></div>
+      <div class="privacy-note">
+        <strong>Privat bleibt privat.</strong>
+        <p>Interne Angaben werden in der Akte gekennzeichnet und nicht automatisch für öffentliche Texte verwendet.</p>
+      </div>
+    </aside>
+
+    <section class="form-column">
+      <div class="section-intro">
+        <div>
+          <p class="eyebrow dark">AnimalProfile.md</p>
+          <h2>Universelle Eingabemaske</h2>
+          <p>Öffne nur die Bereiche, die du gerade brauchst. Leere Felder bleiben in der universellen Vorlage erhalten.</p>
+        </div>
+        <div class="progress-box" aria-live="polite">
+          <span id="progressNumber">0 %</span>
+          <small>Grundprofil ausgefüllt</small>
+        </div>
+      </div>
+      <form id="animalForm" novalidate></form>
+    </section>
+
+    <aside class="preview-column">
+      <div class="preview-card">
+        <div class="preview-head">
+          <div>
+            <p class="eyebrow dark">Live-Ausgabe</p>
+            <h2 id="previewTitle">AnimalProfile</h2>
+          </div>
+          <span class="status-pill" id="previewStatus">Entwurf</span>
+        </div>
+        <div class="animal-snapshot" id="animalSnapshot">
+          <div class="snapshot-mark">🐾</div>
+          <div>
+            <strong>Noch kein Tier erfasst</strong>
+            <p>Die Vorschau wächst mit deinen Angaben.</p>
+          </div>
+        </div>
+        <pre id="markdownPreview" tabindex="0" aria-label="Markdown-Vorschau"></pre>
+        <div class="form-message" id="formMessage" role="status" hidden></div>
+        <div class="preview-actions">
+          <button class="button primary" id="downloadPackage" type="button">Komplette Tierakte herunterladen</button>
+          <button class="button secondary" id="downloadMarkdown" type="button">Nur Markdown</button>
+          <button class="button secondary" id="copyMarkdown" type="button">Kopieren</button>
+        </div>
+        <p class="save-state" id="saveState">Eingaben werden nur in diesem Browser zwischengespeichert.</p>
+      </div>
+    </aside>
+  </main>
+
+  <section class="imprint" id="impressum" aria-labelledby="imprint-title">
+    <p class="eyebrow dark">Rechtliche Angaben</p>
+    <h2 id="imprint-title">Impressum</h2>
+    <p class="imprint-warning">Bitte vor der öffentlichen Veröffentlichung durch die tatsächlichen Angaben der verantwortlichen Person oder Organisation ersetzen.</p>
+    <div class="imprint-grid">
+      <div>
+        <h3>Angaben zum Anbieter</h3>
+        <address>
+          <strong>[Vor- und Nachname / Name der Organisation]</strong><br>
+          [Straße und Hausnummer]<br>
+          [Postleitzahl und Ort]<br>
+          [Land]
+        </address>
+      </div>
+      <div>
+        <h3>Kontakt</h3>
+        <p>E-Mail: [E-Mail-Adresse]<br>Telefon: [optional]</p>
+        <p class="imprint-small">Bei einem eingetragenen Verein oder einer anderen juristischen Person müssen zusätzlich Rechtsform, vertretungsberechtigte Person und gegebenenfalls Registerangaben ergänzt werden.</p>
+      </div>
+      <div>
+        <h3>Verantwortlich für Inhalte</h3>
+        <address>
+          [Vor- und Nachname]<br>
+          [vollständige Anschrift]
+        </address>
+        <p class="imprint-small">Diese Angabe ist insbesondere bei journalistisch-redaktionell gestalteten Angeboten zu prüfen.</p>
+      </div>
+    </div>
+    <p class="imprint-legal">Hinweis: Diese Vorlage ist keine individuelle Rechtsberatung. Die erforderlichen Angaben richten sich nach Betreiber, Rechtsform und Inhalt des Angebots.</p>
+  </section>
+
+  <footer>
+    <p><strong>GraceWays Open</strong> · Viele Herzen. Viele Wege. Ein gemeinsames Ziel.</p>
+    <p>Build Week Prototype · SunCats Pilot · <a href="#impressum">Impressum</a></p>
+    <p class="footer-devotion">Soli Deo gloria.</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
