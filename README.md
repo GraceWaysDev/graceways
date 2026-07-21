@@ -8,6 +8,12 @@ GraceWays helps small animal shelters and rescue organizations turn information 
 
 This repository contains the browser-based prototype created for OpenAI Build Week 2026.
 
+## Project timeline and Build Week scope
+
+GraceWays began as an animal-welfare concept and written project manifesto on July 8, 2026. Before OpenAI Build Week, the work consisted of defining the problem, developing the vision and architecture, and designing the Markdown and YAML-based animal record concept. There was not yet a working public web application.
+
+Between July 13 and July 21, 2026, I used Codex and GPT-5.6 to turn this concept into the submitted working browser prototype. During Build Week, I built and tested the interactive animal-record form, automatic IDs and safe file names, drag-and-drop media handling, live Markdown preview, the Sissi example record, local draft storage, Markdown and ZIP exports, the responsive interface, and the public deployment at graceways.dev.
+
 ## What the prototype does
 
 - creates a universal, species-independent animal profile
