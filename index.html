@@ -58,7 +58,7 @@
     </div>
     <ol class="workflow-steps">
       <li><span>1</span><div><strong>Erfassen</strong><p>Geschichte, Charakter, Gesundheit und Vermittlungsangaben werden in die Universalmaske eingetragen. Bilder, Videos und Audio lassen sich per Drag-and-drop hinzufügen.</p></div></li>
-      <li><span>2</span><div><strong>ID erzeugen</strong><p>Aus Land, Verein, Sammlung und laufender Nummer entsteht eine eindeutige Tier-ID, zum Beispiel <code>EL-SC-BC-007</code>. Der Prototyp merkt sich die Nummer in diesem Browser.</p></div></li>
+      <li><span>2</span><div><strong>ID erzeugen</strong><p>Aus Land, Verein, Sammlung und laufender Nummer entsteht eine Tier-ID, zum Beispiel <code>EL-SC-BC-007</code>. Im Prototyp ist die fortlaufende Nummer nur innerhalb desselben Browsers und Geräts eindeutig; im späteren Vereinsbetrieb übernimmt dies eine gemeinsame zentrale Vergabe.</p></div></li>
       <li><span>3</span><div><strong>Lokal prüfen</strong><p>Texteingaben werden nur in diesem Browser zwischengespeichert. Die Markdown-Vorschau wächst sofort mit; interne Angaben sind besonders gekennzeichnet.</p></div></li>
       <li><span>4</span><div><strong>Herunterladen</strong><p>„Nur Markdown“ speichert eine einzelne <code>.md</code>-Datei. „Komplette Tierakte“ erstellt eine ZIP-Datei mit Markdown, Bildern, Videos und Audio.</p></div></li>
       <li><span>5</span><div><strong>Auf dem Rechner ablegen</strong><p>Der Browser speichert den Download gewöhnlich im Download-Ordner oder fragt nach einem Ziel. Die ZIP-Datei wird anschließend in den gewünschten Vereinsordner entpackt.</p></div></li>
@@ -179,6 +179,8 @@
           <button class="button secondary" id="copyMarkdown" type="button">Kopieren</button>
         </div>
         <p class="save-state" id="saveState">Eingaben werden nur in diesem Browser zwischengespeichert.</p>
+        <p class="local-storage-warning"><strong>Gemeinsam genutzter Computer?</strong> Auch interne Textangaben bleiben lokal als Entwurf gespeichert. Nach dem Export bitte „Neue Tierakte beginnen“ wählen. Hochgeladene Medien werden nicht dauerhaft zwischengespeichert.</p>
+        <p class="media-size-note">Große Videos können beim Erstellen des ZIP-Pakets viel Arbeitsspeicher benötigen.</p>
       </div>
     </aside>
   </main>

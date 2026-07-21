@@ -74,7 +74,7 @@ const sections = [
     field("image_upload", "Bilder hochladen", "files", {wide:true, kind:"image", accept:"image/*", hint:"Das erste Bild wird als Hauptbild verwendet. Mehrere Bilder sind möglich."}),
     field("main_image", "Hauptbild", "text", {readonly:true, hint:"Wird beim Hochladen automatisch eingetragen."}),
     field("images", "Weitere Bilder", "textarea", {readonly:true, hint:"Bildpfade werden automatisch übernommen."}),
-    field("video_upload", "Videos hochladen", "files", {wide:true, kind:"video", accept:"video/*", hint:"Videos per Drag-and-drop oder Dateiauswahl hinzufügen."}),
+    field("video_upload", "Videos hochladen", "files", {wide:true, kind:"video", accept:"video/*", hint:"Videos per Drag-and-drop oder Dateiauswahl hinzufügen. Große Videos benötigen beim Erstellen des ZIP-Pakets entsprechend viel Arbeitsspeicher; für den Prototyp möglichst komprimierte Dateien verwenden."}),
     field("videos", "Videodateien", "textarea", {readonly:true}),
     field("audio_upload", "Audio und Sprachnotizen hochladen", "files", {wide:true, kind:"audio", accept:"audio/*", hint:"Zum Beispiel Sprachnotizen der Pflegestelle."}),
     field("audio", "Audiodateien", "textarea", {readonly:true})
@@ -182,9 +182,22 @@ function reserveCurrentId(d) {
   localStorage.setItem(sequenceStateKey, JSON.stringify(all));
 }
 
-function mediaPath(name, kind) {
+function mediaPath(name, kind, usedPaths = new Set()) {
   const folder = kind === "image" ? "images" : "media";
-  return `${folder}/${name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9._-]+/g, "-")}`;
+  const safeName = String(name || "file")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9._-]+/g, "-")
+    .replace(/^-+|-+$/g, "") || "file";
+  const dot = safeName.lastIndexOf(".");
+  const stem = dot > 0 ? safeName.slice(0, dot) : safeName;
+  const extension = dot > 0 ? safeName.slice(dot) : "";
+  let candidate = `${folder}/${safeName}`;
+  let suffix = 2;
+  while (usedPaths.has(candidate)) candidate = `${folder}/${stem}-${suffix++}${extension}`;
+  usedPaths.add(candidate);
+  return candidate;
 }
 
 function renderMedia(kind) {
@@ -200,7 +213,7 @@ function renderMedia(kind) {
 }
 
 function syncMediaFields(kind) {
-  const paths = uploadedMedia[kind].map(item => mediaPath(item.file.name, kind));
+  const paths = uploadedMedia[kind].map(item => item.path);
   if (kind === "image") {
     form.elements.main_image.value = paths[0] || "";
     form.elements.images.value = paths.slice(1).join("\n");
@@ -209,7 +222,12 @@ function syncMediaFields(kind) {
 }
 
 function addMedia(files, kind) {
-  [...files].filter(file => file.type.startsWith(`${kind}/`)).forEach(file => uploadedMedia[kind].push({file, url:URL.createObjectURL(file)}));
+  const usedPaths = new Set(Object.values(uploadedMedia).flat().map(item => item.path));
+  [...files].filter(file => file.type.startsWith(`${kind}/`)).forEach(file => uploadedMedia[kind].push({
+    file,
+    url: URL.createObjectURL(file),
+    path: mediaPath(file.name, kind, usedPaths)
+  }));
   syncMediaFields(kind);
 }
 
@@ -468,7 +486,7 @@ function update() {
   document.querySelector("#previewStatus").textContent = fresh.status ? fresh.status.replaceAll("_", " ") : "Entwurf";
   const snapshotImage = uploadedMedia.image[0]?.url;
   document.querySelector("#animalSnapshot").innerHTML = fresh.name
-    ? `<div class="snapshot-mark">${snapshotImage ? `<img src="${snapshotImage}" alt="" style="width:44px;height:44px;border-radius:50%;object-fit:cover">` : fresh.species === "dog" ? "🐶" : fresh.species === "cat" ? "🐱" : "🐾"}</div><div><strong>${escapeHtml(fresh.name)}</strong><p>${escapeHtml([fresh.id, fresh.species, fresh.location].filter(Boolean).join(" · "))}</p></div>`
+    ? `<div class="snapshot-mark">${snapshotImage ? `<img class="snapshot-image" src="${snapshotImage}" alt="">` : fresh.species === "dog" ? "🐶" : fresh.species === "cat" ? "🐱" : "🐾"}</div><div><strong>${escapeHtml(fresh.name)}</strong><p>${escapeHtml([fresh.id, fresh.species, fresh.location].filter(Boolean).join(" · "))}</p></div>`
     : '<div class="snapshot-mark">🐾</div><div><strong>Noch kein Tier erfasst</strong><p>Die Vorschau wächst mit deinen Angaben.</p></div>';
 
   const required = sections.flatMap(s => s.fields).filter(f => f.required);
@@ -549,7 +567,7 @@ function triggerDownload(blob, name) {
 async function downloadCompletePackage() {
   if (!validateRequired()) return;
   const d = values(); const files = [{name:`${d.slug || "animal-profile"}.md`, data:new TextEncoder().encode(markdown(d))}];
-  for (const kind of ["image", "video", "audio"]) for (const item of uploadedMedia[kind]) files.push({name:mediaPath(item.file.name, kind), data:new Uint8Array(await item.file.arrayBuffer())});
+  for (const kind of ["image", "video", "audio"]) for (const item of uploadedMedia[kind]) files.push({name:item.path, data:new Uint8Array(await item.file.arrayBuffer())});
   triggerDownload(makeZip(files), `${d.slug || "animal-profile"}-graceways.zip`); reserveCurrentId(d);
   showMessage(`Komplettpaket mit ${files.length - 1} Mediendatei(en) wurde erstellt.`, true);
 }
@@ -599,8 +617,16 @@ document.querySelector("#downloadMarkdown").addEventListener("click", () => {
   if (!validateRequired()) return; const d = values(); reserveCurrentId(d); triggerDownload(new Blob([markdown(d)], {type:"text/markdown;charset=utf-8"}), `${d.slug || "animal-profile"}.md`); showMessage("Markdown-Tierakte wurde erstellt.", true);
 });
 document.querySelector("#downloadPackage").addEventListener("click", downloadCompletePackage);
-document.querySelector("#copyMarkdown").addEventListener("click", async e => {
-  await navigator.clipboard.writeText(preview.textContent); const old = e.currentTarget.textContent; e.currentTarget.textContent = "Kopiert ✓"; setTimeout(() => e.currentTarget.textContent = old, 1400);
+const copyMarkdownButton = document.querySelector("#copyMarkdown");
+copyMarkdownButton.addEventListener("click", async () => {
+  const old = copyMarkdownButton.textContent;
+  try {
+    await navigator.clipboard.writeText(preview.textContent);
+    copyMarkdownButton.textContent = "Kopiert ✓";
+    setTimeout(() => { copyMarkdownButton.textContent = old; }, 1400);
+  } catch {
+    showMessage("Die Markdown-Vorschau konnte nicht automatisch kopiert werden. Bitte markiere den Text und kopiere ihn manuell.");
+  }
 });
 
 try { const saved = JSON.parse(localStorage.getItem(stateKey)); saved ? applyData(saved) : update(); } catch { update(); }

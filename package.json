@@ -1,0 +1,14 @@
+{
+  "name": "graceways-build-week-prototype",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Open-source animal records for rescue organizations worldwide.",
+  "scripts": {
+    "test": "node test-browser.mjs",
+    "build:standalone": "node build-standalone.mjs"
+  },
+  "devDependencies": {
+    "happy-dom": "^20.11.0"
+  }
+}
